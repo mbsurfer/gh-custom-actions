@@ -5,7 +5,7 @@ inputs:
     description: 'Whether to cache dependencies or not'
     required: false
     default: 'true'
-output:
+outputs:
   used-cache:
     description: 'Whether the cache was used or not'
     value: ${{ steps.install.outputs.cache }}
