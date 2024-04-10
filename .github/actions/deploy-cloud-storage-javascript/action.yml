@@ -1,5 +1,15 @@
 name: 'Deploy to GCP Cloud Storage'
 description: 'Deploy a static website to Google Cloud Storage'
+inputs:
+  bucket:
+    description: 'The name of the bucket to deploy to'
+    required: true
+  dist-folder:
+    description: 'The folder containing the static files to deploy'
+    required: true
+  gcp-key:
+    description: 'The Google Cloud Platform service account key'
+    required: true
 runs:
   using: 'node20'
   main: 'main.js'

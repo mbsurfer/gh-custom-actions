@@ -63,11 +63,8 @@ jobs:
       - name: Output contents
         run: ls
       - name: Deploy site
-        run: echo "Deploying..."
-  information:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v4
-      - name: "Run custom action"
         uses: ./.github/actions/deploy-cloud-storage-javascript
+        with:
+          bucket: github-custom-actions-testing
+          dist-folder: ./dist
+          gcp-key: ${{ secrets.GCP_KEY }}
