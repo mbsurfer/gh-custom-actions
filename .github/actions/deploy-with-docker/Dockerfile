@@ -9,7 +9,7 @@ RUN pip install -r requirements.txt
 
 COPY deployment.py /deployment.py
 
-# Write the key to a file
-RUN echo -n "${GOOGLE_KEY}" > /key.json
+# Decode the key and write it to a file
+RUN echo "${GOOGLE_KEY}" | base64 --decode > /key.json
 
 CMD ["python", "/deployment.py"]
