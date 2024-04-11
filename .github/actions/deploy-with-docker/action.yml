@@ -13,6 +13,5 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - '--GOOGLE_KEY'
-    - ${{ inputs.gcp-sa-key }}
+  env:
+    GOOGLE_KEY: ${{ inputs.gcp-sa-key }}
