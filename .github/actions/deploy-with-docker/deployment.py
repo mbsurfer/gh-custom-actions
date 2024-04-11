@@ -5,11 +5,12 @@ import mimetypes
 
 def run():
 
+    # GitHub Actions generates these env variables based on the action's inputs
     bucket_name = os.getenv('INPUT_BUCKET')
     source_folder = os.getenv('INPUT_DIST-FOLDER')
 
     # Create a client
-    client = storage.Client.from_service_account_json(os.getenv('INPUT_GCP-KEY'))
+    client = storage.Client.from_service_account_json(os.getenv('GOOGLE_APPLICATION_CREDENTIALS'))
 
     # Get the bucket
     bucket = client.get_bucket(bucket_name)

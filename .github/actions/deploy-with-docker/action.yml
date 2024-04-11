@@ -1,9 +1,6 @@
 name: 'Deploy to Cloud Storage'
 description: 'Deploy to Cloud Storage'
 inputs:
-  gcp-key:
-    description: 'GCP Service Account Key'
-    required: true
   bucket:
     description: 'GCP Bucket Name'
     required: true
@@ -13,3 +10,5 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    GOOGLE_KEY: ${{ secrets.GCP_SA_KEY }}
