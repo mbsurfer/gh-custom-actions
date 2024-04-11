@@ -7,8 +7,11 @@ inputs:
   dist-folder:
     description: 'Folder to deploy'
     required: true
+  gcp-sa-key:
+    description: 'GCP Service Account Key'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    GOOGLE_KEY: ${{ secrets.GCP_SA_KEY }}
+    GOOGLE_KEY: ${{ inputs.gcp-sa-key }}
