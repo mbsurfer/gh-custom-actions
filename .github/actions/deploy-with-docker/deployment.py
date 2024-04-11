@@ -10,7 +10,7 @@ def run():
     source_folder = os.getenv('INPUT_DIST-FOLDER')
 
     # Create a client
-    client = storage.Client.from_service_account_json(os.getenv('GOOGLE_APPLICATION_CREDENTIALS'))
+    client = storage.Client.from_service_account_json('/tmp/key.json')
 
     # Get the bucket
     bucket = client.get_bucket(bucket_name)
