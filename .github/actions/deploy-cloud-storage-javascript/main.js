@@ -3,7 +3,7 @@ const github = require('@actions/github');
 const exec = require('@actions/exec');
 const fs = require('fs');
 
-function run () {
+async function run () {
   core.notice('Deploying to Google Cloud Storage...');
 
   const bucket = core.getInput('bucket', { required: true });
@@ -16,7 +16,7 @@ function run () {
   fs.writeFileSync(keyPath, gcpKey);
 
   // Authenticate with gcloud
-  exec.exec(`gcloud auth activate-service-account ${gcpServiceAccount} --key-file=${keyPath}`);
+  await exec.exec(`gcloud auth activate-service-account ${gcpServiceAccount} --key-file=${keyPath}`);
 
   // Upload dist files to cloud storage
   const cloudStorageUri = `gs://${bucket}`;
