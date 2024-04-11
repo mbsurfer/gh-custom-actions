@@ -1,0 +1,15 @@
+name: 'Deploy to Cloud Storage'
+description: 'Deploy to Cloud Storage'
+inputs:
+  gcp-key:
+    description: 'GCP Service Account Key'
+    required: true
+  bucket:
+    description: 'GCP Bucket Name'
+    required: true
+  dist-folder:
+    description: 'Folder to deploy'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

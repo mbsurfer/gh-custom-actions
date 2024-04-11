@@ -63,7 +63,7 @@ jobs:
       - name: Output contents
         run: ls
       - name: Deploy site
-        uses: ./.github/actions/deploy-cloud-storage-javascript
+        uses: ./.github/actions/deploy-with-docker
         with:
           bucket: github-custom-actions-testing
           dist-folder: ./dist
