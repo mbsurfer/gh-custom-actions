@@ -68,3 +68,4 @@ jobs:
           bucket: github-custom-actions-testing
           dist-folder: ./dist
           gcp-key: ${{ secrets.GCP_SA_KEY }}
+          gcp-service-account: github-deploy@sharp-airway-413020.iam.gserviceaccount.com

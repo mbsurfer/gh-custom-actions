@@ -9,16 +9,18 @@ function run () {
   const bucket = core.getInput('bucket', { required: true });
   const distFolder = core.getInput('dist-folder', { required: true });
   const gcpKey = core.getInput('gcp-key', { required: true });
+  const gcpServiceAccount = core.getInput('gcp-service-account', { required: true });
 
-  // Write the key to a file
+  // Write the service account credentials to a file
   const keyPath = './gcp-key.json';
   fs.writeFileSync(keyPath, gcpKey);
 
   // Authenticate with gcloud
-  exec.exec(`gcloud auth activate-service-account --key-file=${keyPath}`);
+  exec.exec(`gcloud auth activate-service-account ${gcpServiceAccount} --key-file=${keyPath}`);
 
+  // Upload dist files to cloud storage
   const cloudStorageUri = `gs://${bucket}`;
-  exec.exec(`gcloud storage cp ${distFolder} ${cloudStorageUri}`);
+  exec.exec(`gcloud storage cp -r ${distFolder} ${cloudStorageUri}`);
 }
 
 run();

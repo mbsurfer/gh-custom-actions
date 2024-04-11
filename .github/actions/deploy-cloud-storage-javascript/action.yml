@@ -10,6 +10,9 @@ inputs:
   gcp-key:
     description: 'The Google Cloud Platform service account key'
     required: true
+  gcp-service-account:
+    description: 'The Google Cloud Platform service account email'
+    required: true
 runs:
   using: 'node20'
   main: 'main.js'
